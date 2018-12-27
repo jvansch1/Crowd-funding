@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 from django.template import loader
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -10,4 +11,7 @@ def new(request):
     return HttpResponse(template.render({}, request))
 
 def create(request):
-    return HttpResponse("Creating a User")
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    user = User(username=username, password=password).save()
+    return HttpResponse("Creating A user")
