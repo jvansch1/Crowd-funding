@@ -1,0 +1,9 @@
+<h2>User Index<h2>
+
+    {% if creators %}
+        <ul>
+            {% for creator in creators %}
+            <li><a href="/creators/{{creator.id}}">{{ creator.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
